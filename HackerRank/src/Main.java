@@ -12,29 +12,32 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int K = 3;
+        int binaryNumber = 32;
+        char[] charArray = Integer.toBinaryString(binaryNumber).toCharArray();
 
-        int[] A = {3, 8, 9, 7, 6};
+
+        ArrayList<Integer> countGaps = new ArrayList<>();
+        countGaps.add(0);
 
 
-        for (int i = 0; i < K; i++) {
-            A = rotateArray(A);
+        int countZeros = 0;
+        boolean firstOne = false;
+
+
+        for (int i = 0; i < charArray.length; i++) {
+            if (charArray[i] == '0') {
+                countZeros++;
+            } else {
+                if (firstOne == true) {
+                    countGaps.add(countZeros);
+                    countZeros = 0;
+                    firstOne = false;
+
+
+                }
+                firstOne = true;
+            }
         }
-
-        System.out.println(Arrays.toString(A));
-
-
-    }
-
-    public static int[] rotateArray(int[] A) {
-
-        int[] newArray = new int[A.length];
-
-        for (int x = 0; x <= A.length - 1; x++) {
-            newArray[(x + 1) % A.length] = A[x];
-        }
-
-        return newArray;
     }
 }
 
