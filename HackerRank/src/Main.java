@@ -12,17 +12,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Set<Integer> set = new HashSet<Integer>();
-        int[] array = {1,1,2,2,3,3,4,4,6};
+        int[] array = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19,20, 21};
 
-        for (int num : array) {
-            boolean repeatedNumber = set.add(num);
-            if(repeatedNumber == false) {
-                set.remove(num);
+        Arrays.sort(array);
+
+        int number = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array.length > i ) {
+                if (array[i] + 1 == array[i + 1]) {
+                    continue;
+                } else {
+                    number = array[i] + 1;
+                    break;
+                }
             }
         }
 
-        System.out.println(set.iterator().next());
+        System.out.println(number);
     }
 }
 
